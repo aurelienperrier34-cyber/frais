@@ -1,0 +1,15 @@
+{
+  "name": "Pilote Prades-le-Lez",
+  "area": { "south": 43.682, "west": 3.846, "north": 43.714, "east": 3.884 },
+  "lidar": {
+    "provider": "IGN — LiDAR HD",
+    "resources": ["ign_lidar_hd_mnt_multi_wld", "ign_lidar_hd_mnx_multi_wld"],
+    "resolution_m": 0.5,
+    "policy": "Chaque résultat affiche sa couverture LiDAR réelle. Aucune hauteur manquante n'est estimée."
+  },
+  "shadow": {
+    "sampling": "points sur le trajet et obstacles dans la direction du soleil",
+    "time_model": "heure de départ puis progression le long du trajet",
+    "status": "beta — à valider sur le terrain"
+  }
+}
