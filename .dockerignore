@@ -1,0 +1,9 @@
+.git
+.agents
+.codex
+docs
+feedback
+data/lidar
+node_modules
+*.zip
+mobile.html
