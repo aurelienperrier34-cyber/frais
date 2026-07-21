@@ -1,0 +1,8 @@
+data/lidar/
+*.tif
+*.zip
+node_modules/
+.DS_Store
+feedback/
+docs/council-*.html
+docs/council-*-transcript.md
