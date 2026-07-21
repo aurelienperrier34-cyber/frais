@@ -1,0 +1,5 @@
+.map-card { height: 360px; min-height: 0; }
+.map-card .map { display: none !important; }
+#live-map { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+#live-map.leaflet-container { width: 100% !important; height: 100% !important; }
+@media (max-width: 530px) { .map-card { height: 340px; } }
