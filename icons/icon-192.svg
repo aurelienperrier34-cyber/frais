@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" role="img" aria-label="Frais">
+  <rect width="192" height="192" rx="42" fill="#123b35"/>
+  <circle cx="55" cy="54" r="27" fill="#ffd66e"/>
+  <g stroke="#ffd66e" stroke-width="7" stroke-linecap="round"><path d="M55 15v-8M55 101v-8M16 54H8M102 54h-8M28 27l-6-6M82 27l6-6"/></g>
+  <path d="M158 32C105 41 65 76 65 120c0 27 18 43 44 43 42 0 61-39 55-75-3-20-15-39-6-56Z" fill="#78bd4a"/>
+  <path d="M75 145c24-25 48-48 75-75" fill="none" stroke="#f7f6ef" stroke-width="10" stroke-linecap="round"/>
+  <path d="M35 155c27 8 63 8 94-2" fill="none" stroke="#f7f6ef" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="35" cy="155" r="8" fill="#f26b4f"/><circle cx="129" cy="153" r="8" fill="#f7f6ef"/>
+</svg>
