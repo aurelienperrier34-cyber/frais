@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Frais</title>
+  <desc id="desc">Un soleil, une feuille protectrice et un trajet piéton</desc>
+  <defs>
+    <linearGradient id="night" x1="40" y1="20" x2="480" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16463e"/>
+      <stop offset="1" stop-color="#0c2726"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="205" y1="130" x2="424" y2="386" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d8f277"/>
+      <stop offset="1" stop-color="#61bd78"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="105" y1="100" x2="254" y2="246" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe69a"/>
+      <stop offset="1" stop-color="#ffad47"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#001514" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="512" height="512" rx="118" fill="url(#night)"/>
+  <circle cx="183" cy="181" r="100" fill="url(#sun)"/>
+  <g stroke="#ffdc78" stroke-width="14" stroke-linecap="round" opacity=".95">
+    <path d="M183 51V25"/><path d="M79 78L60 59"/><path d="M53 181H27"/><path d="M287 181H313"/><path d="M257 78l19-19"/>
+  </g>
+  <path d="M429 91c-122 21-220 99-220 216 0 69 49 119 119 119 100 0 164-94 140-202-10-49-30-89-39-133Z" fill="url(#leaf)" filter="url(#shadow)"/>
+  <path d="M270 368c37-60 85-118 146-175" fill="none" stroke="#247c5f" stroke-width="13" stroke-linecap="round" opacity=".75"/>
+  <path d="M105 394c76 27 178 27 271-9 17-7 33-16 48-26" fill="none" stroke="#f8f6ed" stroke-width="30" stroke-linecap="round" filter="url(#shadow)"/>
+  <circle cx="105" cy="394" r="23" fill="#f26c55" stroke="#f8f6ed" stroke-width="9"/>
+  <circle cx="424" cy="359" r="23" fill="#123b35" stroke="#f8f6ed" stroke-width="9"/>
+</svg>
