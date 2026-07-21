@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mise à jour de Frais…</title></head>
+<body style="font-family:system-ui,sans-serif;padding:2rem;color:#14372d">Mise à jour de Frais…</body>
+<script>
+  (async () => {
+    if ('serviceWorker' in navigator) {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(registrations.map(registration => registration.unregister()));
+    }
+    location.replace(`/index.html?version=20-${Date.now()}`);
+  })();
+</script>
+</html>
