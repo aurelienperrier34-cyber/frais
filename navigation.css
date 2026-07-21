@@ -1,0 +1,9 @@
+.navigation-panel { margin-top: 18px; padding: 17px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); }
+.navigation-panel h2 { margin: 4px 0 7px; font-size: 1.12rem; }
+.navigation-panel p { margin: 0 0 12px; color: var(--muted); font-size: .85rem; }
+#navigation-steps { margin: 15px 0 0; padding-left: 22px; }
+#navigation-steps li { padding: 8px 0 8px 6px; border-bottom: 1px solid var(--line); font-size: .86rem; }
+#navigation-steps li:last-child { border: 0; }
+#navigation-steps small { display: block; margin-top: 2px; color: var(--muted); }
+#navigation-steps li.active-step { margin-left: -7px; padding-left: 13px; border-radius: 10px; background: #e2f3cf; color: var(--ink); font-weight: 700; }
+#navigation-steps li.active-step small { color: #1d664b; font-weight: 700; }
