@@ -1,0 +1,5 @@
+.planner-actions { display: flex; gap: 8px; align-items: stretch; }
+.secondary { border: 1px solid var(--green); border-radius: 12px; background: #f6fbef; color: var(--green); padding: 0 12px; font-weight: 700; font-size: .82rem; cursor: pointer; white-space: nowrap; }
+@media (max-width: 530px) { .planner-actions { display: grid; grid-template-columns: 1fr 1fr; } }
+
+.brand{display:inline-flex;align-items:center;gap:8px;font-size:1.35rem}.brand img{display:block;width:31px;height:31px}.brand>span{display:block;background:none!important;color:inherit!important;width:auto!important;height:auto!important;font:inherit!important}
