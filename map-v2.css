@@ -1,0 +1,113 @@
+/* Carte interactive isolée de toute ancienne illustration. */
+.map-card {
+  position: relative;
+  height: min(52vh, 430px);
+  min-height: 330px;
+  margin: 25px 0 30px;
+  overflow: hidden;
+  background: #dce8d4;
+}
+
+#tile-map {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  z-index: 1;
+  background: #dce8d4;
+  overflow: hidden;
+}
+
+#tile-map img { position: absolute; width: 256px; height: 256px; max-width: none; user-select: none; }
+
+#live-map { display: none !important; }
+
+#route-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+#route-overlay .route-shadow { fill: none; stroke: #fffefc; stroke-width: 25; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+#route-overlay .route-line { fill: none; stroke: #e8a634; stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; }
+#route-overlay .route-start { fill: #1d664b; stroke: #fffefc; stroke-width: 8; }
+#route-overlay .route-end { fill: #ec684b; stroke: #fffefc; stroke-width: 8; }
+
+.map-card .weather-pill,
+.map-card .map-note,
+.exit-navigation { z-index: 20; }
+
+.exit-navigation {
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 13px;
+  color: #17332d;
+  background: #fffefce8;
+  font: inherit;
+  font-weight: 800;
+}
+
+.navigation-hud {
+  display: none;
+}
+
+body.navigation-mode { overflow: hidden; }
+body.navigation-mode .map-card {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+body.navigation-mode .map-card .map-note { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+body.navigation-mode .exit-navigation { display: block; }
+body.navigation-mode .navigation-hud {
+  display: block;
+  position: absolute;
+  z-index: 21;
+  left: 14px;
+  right: 14px;
+  top: calc(14px + env(safe-area-inset-top));
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 15px;
+  border-radius: 18px;
+  color: #17332d;
+  background: rgba(255, 254, 252, .96);
+  box-shadow: 0 10px 30px rgba(20, 48, 41, .22);
+}
+.navigation-arrow { display: grid; flex: 0 0 48px; width: 48px; height: 48px; place-items: center; border-radius: 14px; color: #fff; background: #1671a5; font-size: 2rem; font-weight: 800; line-height: 1; }
+.navigation-instruction { min-width: 0; }
+.navigation-current-step {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.navigation-current-step strong,
+.navigation-current-step small { display: block; }
+.navigation-current-step small { margin-bottom: 3px; color: #1671a5; font-size: .78rem; font-weight: 850; }
+.navigation-following-step { overflow: hidden; margin: 4px 0 0; color: #5f716a; font-size: .75rem; white-space: nowrap; text-overflow: ellipsis; }
+.navigation-trip { display: none; }
+body.navigation-mode .navigation-trip { display: flex; position: absolute; z-index: 21; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); left: 14px; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 15px; border-radius: 15px; color: #17332d; background: rgba(255, 254, 252, .96); box-shadow: 0 8px 22px rgba(20, 48, 41, .18); }
+.navigation-trip strong { color: #1671a5; font-size: .97rem; }
+.navigation-trip span { color: #5f716a; font-size: .78rem; font-weight: 700; text-align: right; }
+
+@media (max-width: 530px) {
+  .map-card { height: 370px; min-height: 370px; }
+}
