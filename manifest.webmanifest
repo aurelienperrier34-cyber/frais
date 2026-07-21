@@ -1,0 +1,14 @@
+{
+  "name": "Frais — trajets à l’ombre",
+  "short_name": "Frais",
+  "description": "Choisissez un trajet piéton plus ombragé pendant les fortes chaleurs.",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f6ef",
+  "theme_color": "#123b35",
+  "icons": [
+    { "src": "icons/icon-192.svg?v=2", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "icons/icon-512.svg?v=2", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
