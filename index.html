@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123b35" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Frais" />
+    <title>Frais — se déplacer mieux pendant les fortes chaleurs</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.svg?v=2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg?v=2" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="live-map.css" />
+    <link rel="stylesheet" href="data-status.css" />
+    <link rel="stylesheet" href="time.css?v=20" />
+    <link rel="stylesheet" href="navigation.css?v=20" />
+    <link rel="stylesheet" href="map-fix.css?v=28" />
+    <link rel="stylesheet" href="map-v2.css?v=5" />
+    <link rel="stylesheet" href="update.css?v=1" />
+    <link rel="stylesheet" href="public.css?v=1" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ/LMsUTQ7U/6uqkR1mT8LlfWp6pYz8=" crossorigin="" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Accueil Frais"><img src="icons/icon-192.svg?v=2" alt="" /> <span>frais</span></a>
+        <div class="topbar-actions"><button id="update-app" class="update-app" type="button">↻ Mettre à jour</button></div>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">ITINÉRAIRES PIÉTONS</p>
+        <h1>Marche plus<br /><em>confortablement.</em></h1>
+        <p class="subtitle">Compare le temps, l’<strong>ombre</strong> et la fraîcheur estimée pour choisir ton trajet.</p>
+      </section>
+
+      <section class="planner" aria-label="Planifier un trajet">
+        <div class="place-fields">
+          <label><span class="route-dot start"></span><input id="from" placeholder="Point de départ" aria-label="Point de départ" autocomplete="street-address" /></label>
+          <span class="route-line" aria-hidden="true"></span>
+          <label><span class="route-dot end"></span><input id="to" placeholder="Destination" aria-label="Destination" autocomplete="street-address" /></label>
+          <label class="departure-time"><span>Départ</span><input id="departure-time" type="datetime-local" aria-label="Date et heure de départ" /></label>
+        </div>
+        <div class="planner-actions"><button id="use-location" type="button" class="secondary">⌖ Utiliser ma position</button><button id="search" class="primary">Voir les itinéraires <span>→</span></button></div>
+      </section>
+
+      <section class="map-card" aria-label="Aperçu du parcours">
+        <div class="weather-pill" id="weather-pill"><span>☀</span> Météo en cours…</div>
+        <div id="tile-map" role="img" aria-label="Carte OpenStreetMap du trajet"></div>
+        <svg id="route-overlay" aria-label="Itinéraire sélectionné" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>
+        <div id="live-map" aria-label="Carte OpenStreetMap de Prades-le-Lez"></div>
+        <svg class="map" viewBox="0 0 760 360" role="img" aria-label="Carte illustrative du trajet Montpellier Prades-le-Lez">
+          <rect width="760" height="360" fill="#dce8d4" />
+          <path d="M-20 78 C126 28 220 125 346 73 S586 45 780 102" class="road major" />
+          <path d="M20 288 C150 238 270 310 388 239 S620 223 770 272" class="road major" />
+          <path d="M99 -10 C121 73 77 160 158 235 S197 354 236 380" class="road" />
+          <path d="M319 -8 C285 72 351 136 322 203 S365 311 344 376" class="road" />
+          <path d="M574 -5 C518 74 621 132 580 198 S637 282 599 370" class="road" />
+          <path d="M-20 177 C115 138 204 204 293 176 S523 126 782 168" class="road" />
+          <path d="M0 335 C135 275 215 330 326 281 S552 270 758 329" class="road" />
+          <path d="M472 7 C436 88 475 128 444 201 S451 303 495 363" class="road thin" />
+          <g class="blocks"><rect x="43" y="110" width="70" height="38"/><rect x="179" y="68" width="89" height="44"/><rect x="382" y="93" width="60" height="44"/><rect x="618" y="99" width="83" height="42"/><rect x="152" y="244" width="74" height="39"/><rect x="385" y="250" width="76" height="44"/><rect x="628" y="231" width="57" height="43"/></g>
+          <g class="trees"><circle cx="112" cy="177" r="24"/><circle cx="142" cy="181" r="21"/><circle cx="478" cy="113" r="30"/><circle cx="516" cy="110" r="25"/><circle cx="575" cy="259" r="30"/><circle cx="615" cy="278" r="22"/><circle cx="290" cy="280" r="22"/></g>
+          <path id="route-fast" d="M93 255 C191 229 266 201 358 176 S528 130 678 100" class="route fast" />
+          <path id="route-shade" d="M93 255 C155 281 208 297 282 281 S377 249 450 239 S533 223 575 190 S632 131 678 100" class="route shade hidden" />
+          <circle cx="93" cy="255" r="10" class="pin start-pin"/><circle cx="678" cy="100" r="10" class="pin end-pin"/>
+          <text x="46" y="330">MONTPELLIER</text><text x="610" y="73">PRADES-LE-LEZ</text>
+        </svg>
+        <div class="map-note"><span class="leaf">◆</span><span id="map-note">Itinéraire le plus rapide affiché</span><button id="toggle-lidar" title="Afficher ou masquer les hauteurs LiDAR">3D</button><button id="locate" title="Me localiser">⌖</button></div>
+        <aside id="navigation-hud" class="navigation-hud" hidden aria-live="polite">
+          <div id="navigation-arrow" class="navigation-arrow" aria-hidden="true">↑</div>
+          <div class="navigation-instruction">
+            <p id="navigation-current-step" class="navigation-current-step">Choisis un itinéraire pour commencer.</p>
+            <p id="navigation-following-step" class="navigation-following-step"></p>
+          </div>
+        </aside>
+        <aside id="navigation-trip" class="navigation-trip" hidden aria-live="polite">
+          <strong id="navigation-remaining">—</strong>
+          <span id="navigation-arrival">—</span>
+        </aside>
+        <button id="exit-navigation" class="exit-navigation" type="button">← Quitter le guidage</button>
+      </section>
+      <a id="osm-directions" class="directions" href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot" target="_blank" rel="noreferrer">Ouvrir l’itinéraire piéton dans OpenStreetMap ↗</a>
+      <section class="data-status" aria-live="polite"><p class="eyebrow">DONNÉES DU TRAJET</p><h2>Ce que l’app a trouvé</h2><p id="route-status">Choisis un départ et une destination pour calculer le trajet.</p><div class="data-grid"><span>🌳 <b id="tree-count">—</b> arbres cartographiés</span><span>💧 <b id="water-count">—</b> points d’eau signalés</span><span>▦ <b id="building-count">—</b> bâtiments proches</span><span>↔ <b id="crossing-count">—</b> traversées signalées</span><span>🏢 <b id="building-height-count">—</b> hauteurs de bâtiment renseignées</span><span>🌲 <b id="tree-height-count">—</b> hauteurs d’arbre renseignées</span><span>📡 <b id="lidar-count">—</b> mesures LiDAR exploitées</span></div><p class="coverage-note">Analyse détaillée de l’ombre disponible à Prades-le-Lez. L’estimation dépend de l’heure choisie, du soleil et des données LiDAR disponibles.</p></section>
+
+      <section class="results" aria-live="polite">
+        <div class="section-heading"><div><p class="eyebrow">3 PROPOSITIONS</p><h2>Quel compromis te convient ?</h2></div><span id="distance">—</span></div>
+        <div class="route-options" id="route-options">
+          <button class="route-option active" data-route="fast">
+            <span class="route-icon amber">☀</span><span class="route-copy"><strong>Le plus rapide</strong><small>À calculer</small></span><span class="route-stats"><b>—</b><small>choisis un trajet</small></span>
+          </button>
+          <button class="route-option" data-route="shade">
+            <span class="route-icon green">♣</span><span class="route-copy"><strong>Le plus à l’ombre</strong><small>À calculer</small></span><span class="route-stats"><b>—</b><small>choisis un trajet</small></span>
+          </button>
+          <button class="route-option" data-route="cool">
+            <span class="route-icon blue">❋</span><span class="route-copy"><strong>Le plus frais</strong><small>À calculer</small></span><span class="route-stats"><b>—</b><small>choisis un trajet</small></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="insight" id="insight"><span class="insight-icon">♣</span><p>Choisis un trajet : l’app chargera le réseau, les arbres, les bâtiments, l’eau et le soleil du moment.</p></section>
+      <section class="navigation-panel" id="navigation-panel" hidden aria-live="polite">
+        <p class="eyebrow">GUIDAGE PIÉTON</p><h2>Étapes du trajet</h2>
+        <p id="navigation-status">Choisis un itinéraire pour afficher les étapes.</p>
+        <button class="primary" id="start-navigation" type="button">Démarrer le guidage <span>⌖</span></button>
+        <ol id="navigation-steps"></ol>
+      </section>
+      <p class="disclaimer">L’ombre et la fraîcheur sont estimées à partir de l’heure choisie, des données disponibles et des conditions réelles. Vérifie toujours les accès piétons et adapte ta marche à la chaleur.</p>
+    </main>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="live-map.js?v=56"></script>
+    <script src="app.js?v=29"></script>
+    <script src="route-recovery.js?v=20"></script>
+  </body>
+</html>
