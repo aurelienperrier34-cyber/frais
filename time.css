@@ -1,0 +1,9 @@
+.departure-time {
+  border-top: 1px solid var(--line);
+  margin-top: 3px;
+  padding-top: 4px !important;
+  color: var(--muted);
+  font-size: .73rem;
+}
+.departure-time span { width: 40px; font-weight: 800; }
+.departure-time input { color: var(--ink) !important; font-size: .8rem !important; }
